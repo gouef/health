@@ -32,6 +32,14 @@
 
 ## 🚀 Quick start
 
+Install the package in your project:
+
+```bash
+go get github.com/gouef/health
+```
+
+Example usage:
+
 ```go
 package main
 
