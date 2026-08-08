@@ -71,6 +71,18 @@ func main() {
 }
 ```
 
+Example handler response:
+
+```json
+{
+  "status": "UP",
+  "services": {
+    "app": {"status": "UP", "type": "custom", "response_time_ms": 0},
+    "api": {"status": "UP", "type": "http", "response_time_ms": 42}
+  }
+}
+```
+
 ## 🧪 Testing
 
 Run the test suite:
