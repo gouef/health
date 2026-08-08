@@ -43,6 +43,12 @@ func TestGenerateBootstrapDashboardHTML(t *testing.T) {
 	if !strings.Contains(html, "text-bg-warning\">DEGRADED") {
 		t.Fatal("expected degraded status badge in generated html")
 	}
+	if !strings.Contains(html, "data-bs-theme=\"dark\"") {
+		t.Fatal("expected dark mode to be default in generated html")
+	}
+	if !strings.Contains(html, "id=\"theme-toggle\"") {
+		t.Fatal("expected theme toggle button in generated html")
+	}
 }
 
 func TestGenerateBootstrapDashboardHTMLDefaultsTitle(t *testing.T) {

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +13,10 @@
         <h1 class="h3 mb-1">{{ .Title }}</h1>
         <div class="text-body-secondary small">Generated: {{ .Generated }}</div>
       </div>
-      <div class="badge fs-6 text-bg-{{ statusClass .Status }}">{{ .Status }}</div>
+      <div class="d-flex align-items-center gap-2">
+        <button id="theme-toggle" type="button" class="btn btn-outline-secondary btn-sm">Toggle theme</button>
+        <div class="badge fs-6 text-bg-{{ statusClass .Status }}">{{ .Status }}</div>
+      </div>
     </div>
 
     <div class="card shadow-sm">
@@ -57,5 +60,34 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <script>
+    (function () {
+      var storageKey = "health-dashboard-theme";
+      var root = document.documentElement;
+      var button = document.getElementById("theme-toggle");
+
+      if (!button) {
+        return;
+      }
+
+      function applyTheme(theme) {
+        root.setAttribute("data-bs-theme", theme);
+        button.textContent = theme === "dark" ? "Switch to light" : "Switch to dark";
+      }
+
+      var savedTheme = localStorage.getItem(storageKey);
+      if (savedTheme === "light" || savedTheme === "dark") {
+        applyTheme(savedTheme);
+      } else {
+        applyTheme("dark");
+      }
+
+      button.addEventListener("click", function () {
+        var nextTheme = root.getAttribute("data-bs-theme") === "dark" ? "light" : "dark";
+        applyTheme(nextTheme);
+        localStorage.setItem(storageKey, nextTheme);
+      });
+    })();
+  </script>
 </body>
 </html>
