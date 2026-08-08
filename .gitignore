@@ -5,6 +5,7 @@
 /vendor
 /coverage.txt
 /coverage.*
+/.gocache
 # Binaries for programs and plugins
 *.exe
 *.exe~

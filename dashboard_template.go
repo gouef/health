@@ -97,6 +97,8 @@ func (d *Dashboard) BootstrapHandler(title string) gin.HandlerFunc {
 			statusCode = http.StatusServiceUnavailable
 		}
 
-		c.Data(statusCode, "text/html; charset=utf-8", []byte(html))
+		c.Status(statusCode)
+		c.Header("Content-Type", "text/html; charset=utf-8")
+		_, _ = c.Writer.WriteString(html)
 	}
 }
