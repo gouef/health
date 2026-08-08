@@ -71,6 +71,18 @@ func main() {
 }
 ```
 
+Expose it through Gin:
+
+```go
+import "github.com/gin-gonic/gin"
+
+func main() {
+    r := gin.New()
+    r.GET("/health", h.Handler())
+    _ = r.Run(":8080")
+}
+```
+
 Example handler response:
 
 ```json
